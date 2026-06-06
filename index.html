@@ -3,61 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cửa Hàng Máy Ảnh Của Tôi</title>
+    <title>Web2Hand - Máy Đổi Đời</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #f4f6f9; color: #333; padding-bottom: 60px; }
-        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 40px 20px; text-align: center; }
-        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        .filter-container { margin-bottom: 25px; display: flex; gap: 10px; }
-        .filter-btn { background-color: #fff; border: 1px solid #ddd; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 500; }
-        .filter-btn.active, .filter-btn:hover { background-color: #1e3c72; color: #fff; border-color: #1e3c72; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-        .product-card { background-color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s; }
-        .product-card:hover { transform: translateY(-5px); }
-        .img-container { position: relative; width: 100%; height: 220px; background-color: #eaeaea; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; }
-        .status-badge { position: absolute; top: 12px; right: 12px; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
+        
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 30px 20px; text-align: center; }
+        header h1 { font-size: 2rem; margin-bottom: 5px; }
+        
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 20px; }
+        
+        /* Thanh Danh Mục Giống Thế Giới Di Động */
+        .category-nav { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 30px; 
+            overflow-x: auto; 
+            padding: 10px 5px;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .category-nav::-webkit-scrollbar { height: 4px; }
+        .category-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        
+        .cat-btn { 
+            background-color: #fff; 
+            border: 1px solid #e0e0e0; 
+            padding: 10px 20px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            color: #444;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .cat-btn.active, .cat-btn:hover { 
+            background-color: #f51111; 
+            color: #fff; 
+            border-color: #f51111; 
+            transform: translateY(-2px);
+        }
+        
+        /* Grid Sản phẩm */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+        .product-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.06); display: flex; flex-direction: column; transition: transform 0.2s; border: 1px solid #eee; }
+        .product-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .img-container { position: relative; width: 100%; height: 200px; background-color: #fff; display: flex; align-items: center; justify-content: center; padding: 10px; }
+        .product-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        .status-badge { position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
         .status-instock { background-color: #e6f4ea; color: #137333; }
         .status-outstock { background-color: #fce8e6; color: #c5221f; }
-        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-id { font-size: 0.8rem; color: #888; margin-bottom: 5px; font-weight: bold; }
-        .product-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; height: 2.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .product-desc { font-size: 0.9rem; color: #666; margin-bottom: 15px; height: 2.7rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .product-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 15px; border-top: 1px solid #eee; }
-        .product-price { font-size: 1.25rem; font-weight: 700; color: #d9383a; }
-        .product-stock { font-size: 0.85rem; }
-        .contact-btn { display: block; text-align: center; background-color: #25d366; color: white; text-decoration: none; padding: 10px; border-radius: 8px; margin-top: 15px; font-weight: 600; }
-        .loading, .error-msg { text-align: center; padding: 50px; font-size: 1.2rem; grid-column: 1 / -1; }
+        
+        .product-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-cat-label { font-size: 0.75rem; color: #ff9800; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; }
+        .product-name { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; height: 2.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: #222; }
+        .product-desc { font-size: 0.85rem; color: #666; margin-bottom: 12px; height: 2.4rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .product-meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #f5f5f5; }
+        .product-price { font-size: 1.15rem; font-weight: 700; color: #bf0808; }
+        .product-stock { font-size: 0.8rem; color: #777; }
+        
+        .contact-btn { display: block; text-align: center; background-color: #25d366; color: white; text-decoration: none; padding: 8px; border-radius: 6px; margin-top: 12px; font-weight: 600; font-size: 0.9rem; }
+        .contact-btn:hover { background-color: #128c7e; }
+        
+        .loading, .error-msg { text-align: center; padding: 50px; font-size: 1.1rem; grid-column: 1 / -1; color: #666; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Cửa Hàng Máy Ảnh & Dịch Vụ</h1>
-        <p>Danh mục hàng hóa cập nhật trực tiếp từ Google Sheets</p>
+        <h1>Web2Hand Catalog</h1>
+        <p>Hàng công nghệ chất lượng - Cập nhật kho liên tục</p>
     </header>
 
     <div class="container">
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterProducts('all')">Tất cả</button>
-            <button class="filter-btn" onclick="filterProducts('instock')">Còn hàng</button>
-            <button class="filter-btn" onclick="filterProducts('outstock')">Hết hàng</button>
+        <div class="category-nav">
+            <button class="cat-btn active" onclick="filterByCategory('Tất cả')">✨ Tất cả</button>
+            <button class="cat-btn" onclick="filterByCategory('Máy ảnh')">📸 Máy ảnh</button>
+            <button class="cat-btn" onclick="filterByCategory('Điện thoại')">📱 Điện thoại</button>
+            <button class="cat-btn" onclick="filterByCategory('Máy tính')">💻 Máy tính</button>
+            <button class="cat-btn" onclick="filterByCategory('Ipad')">平板 Ipad</button>
+            <button class="cat-btn" onclick="filterByCategory('Đồng hồ thông minh')">⌚️ Đồng hồ</button>
+            <button class="cat-btn" onclick="filterByCategory('Tai nghe')">🎧 Tai nghe</button>
+            <button class="cat-btn" onclick="filterByCategory('Máy chơi game')">🎮 Máy chơi game</button>
+            <button class="cat-btn" onclick="filterByCategory('Máy đọc sách')">📖 Máy đọc sách</button>
         </div>
 
         <div class="product-grid" id="product-list">
-            <div class="loading">Đang kết nối kho hàng Google Sheets...</div>
+            <div class="loading">Đang tải dữ liệu sản phẩm từ hệ thống...</div>
         </div>
     </div>
 
     <script>
-        // CẤU HÌNH LIÊN KẾT GOOGLE SHEETS
         const SHEET_ID = '1AGDoaoLvld0Ia11_LEHRP2X0xa6C7xdOi2lwSc4wXtU';
-        const SHEET_NAME = 'QuanLiWeb'; // << Tên tab phía dưới cùng của file Google Sheets (ví dụ: Trang tính1 hoặc Sheet1)
+        const SHEET_NAME = 'QuanLiWeb'; // Đổi lại tên nếu tab bên dưới Sheet của bạn thay đổi
         
         const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
         let allProducts = [];
+        let currentCategory = 'Tất cả';
 
         function loadProducts() {
             fetch(url)
@@ -67,57 +113,65 @@
                     const data = JSON.parse(jsonString);
                     const rows = data.table.rows;
                     
-                    // Chuyển đổi dữ liệu bảng thành mảng object trong JavaScript
+                    // Cấu trúc cột mới: A=ID, B=DanhMuc, C=TenSanPham, D=HinhAnh, E=Gia, F=TonKho, G=Mota
                     allProducts = rows.map(row => {
                         const cells = row.c;
                         return {
-                            id: cells[0] ? cells[0].v : 'Không mã',
-                            name: cells[1] ? cells[1].v : 'Sản phẩm không tên',
-                            image: cells[2] ? cells[2].v : '',
-                            price: cells[3] ? cells[3].v : 'Liên hệ',
-                            stock: cells[4] ? Number(cells[4].v) : 0,
-                            desc: cells[5] ? cells[5].v : ''
+                            id: cells[0] ? cells[0].v : 'Mã trống',
+                            category: cells[1] ? cells[1].v : 'Chưa phân loại',
+                            name: cells[2] ? cells[2].v : 'Sản phẩm không tên',
+                            image: cells[3] ? cells[3].v : '',
+                            price: cells[4] ? cells[4].v : 'Liên hệ',
+                            stock: cells[5] ? Number(cells[5].v) : 0,
+                            desc: cells[6] ? cells[6].v : ''
                         };
                     });
                     renderProducts(allProducts);
                 })
                 .catch(err => {
-                    document.getElementById('product-list').innerHTML = `<div class="error-msg">Không thể đọc kho hàng. Hãy chắc chắn bạn đã "Chia sẻ công khai với bất kỳ ai có liên kết" và cấu hình đúng tên SHEET_NAME.</div>`;
+                    document.getElementById('product-list').innerHTML = `<div class="error-msg">Không thể lấy dữ liệu. Hãy kiểm tra lại phân quyền "Người xem công khai" trên Google Sheets và tên tab Trang tính.</div>`;
                 });
         }
 
         function renderProducts(products) {
             const listContainer = document.getElementById('product-list');
-            if (products.length === 0) {
-                listContainer.innerHTML = '<div class="loading">Danh mục trống.</div>';
+            
+            // Lọc sản phẩm theo danh mục đang chọn
+            let filtered = products;
+            if (currentCategory !== 'Tất cả') {
+                filtered = products.filter(p => p.category.trim().toLowerCase() === currentCategory.trim().toLowerCase());
+            }
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<div class="loading">Hiện chưa có sản phẩm nào thuộc danh mục này.</div>';
                 return;
             }
 
             let html = '';
-            products.forEach(p => {
+            filtered.forEach(p => {
                 const isAvailable = p.stock > 0;
                 const statusText = isAvailable ? 'Còn hàng' : 'Hết hàng';
                 const statusClass = isAvailable ? 'status-instock' : 'status-outstock';
                 let priceDisplay = typeof p.price === 'number' ? p.price.toLocaleString('vi-VN') + ' đ' : p.price;
 
-                // Hãy thay số Zalo nhận đơn của bạn vào link dưới này
-                const zaloUrl = `https://zalo.me/0900000000`; // <-- Thay 0900000000 thành SĐT Zalo thật
+                // Đường link Zalo nhận đơn (Hãy đổi số điện thoại của bạn tại đây)
+                const zaloUrl = `https://zalo.me/0900000000`; 
 
                 html += `
                     <div class="product-card">
                         <div class="img-container">
-                            <img class="product-img" src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/300x220?text=Lỗi+Ảnh+Drive'">
+                            <img class="product-img" src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/240x200?text=Hình+Ảnh'">
                             <span class="status-badge ${statusClass}">${statusText}</span>
                         </div>
                         <div class="product-info">
-                            <div class="product-id">Mã: ${p.id}</div>
+                            <div class="product-cat-label">${p.category}</div>
                             <div class="product-name" title="${p.name}">${p.name}</div>
-                            <div class="product-desc">${p.desc || ''}</div>
+                            <div class="product-desc" title="${p.desc}">${p.desc || ''}</div>
                             <div class="product-meta">
                                 <span class="product-price">${priceDisplay}</span>
                                 <span class="product-stock">Kho: <strong>${p.stock}</strong></span>
                             </div>
-                            <a href="${zaloUrl}" target="_blank" class="contact-btn">Mua qua Zalo</a>
+                            <a href="${zaloUrl}" target="_blank" class="contact-btn">Nhắn tin mua</a>
                         </div>
                     </div>
                 `;
@@ -125,13 +179,17 @@
             listContainer.innerHTML = html;
         }
 
-        function filterProducts(type) {
-            const buttons = document.querySelectorAll('.filter-btn');
+        function filterByCategory(catName) {
+            currentCategory = catName;
+            
+            // Đổi hiệu ứng màu nút Active
+            const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Tìm nút được bấm dựa trên text của nó
             event.target.classList.add('active');
-            if (type === 'all') renderProducts(allProducts);
-            else if (type === 'instock') renderProducts(allProducts.filter(p => p.stock > 0));
-            else if (type === 'outstock') renderProducts(allProducts.filter(p => p.stock <= 0));
+            
+            renderProducts(allProducts);
         }
 
         window.onload = loadProducts;
