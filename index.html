@@ -22,34 +22,51 @@
             top: 0; 
             z-index: 100; 
         }
-        .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
         
-        /* Logo chữ màu trắng in đậm phong cách Times New Roman */
+        /* Logo chữ màu trắng in đậm phong cách Times New Roman (ĐÃ BỎ DẤU GẠCH DƯỚI) */
         .logo { font-family: 'Times New Roman', Times, serif; font-size: 2.3rem; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: 1px; }
-        .logo span { color: #fff; font-weight: bold; }
 
-        /* Thanh tìm kiếm bo tròn */
-        .search-box { position: relative; flex-grow: 1; max-width: 350px; min-width: 200px; }
-        .search-box input { width: 100%; padding: 8px 40px 8px 15px; border: 2px solid #fff; border-radius: 30px; font-size: 0.95rem; outline: none; background: #fff; }
+        /* THANH TÌM KIẾM CÓ NÚT KÍNH LÚP TRÒN TRẮNG NỀN HEADER CHUẨN YÊU CẦU */
+        .search-box { position: relative; flex-grow: 1; max-width: 380px; min-width: 220px; display: flex; align-items: center; }
+        .search-box input { width: 100%; padding: 10px 50px 10px 20px; border: 2px solid #fff; border-radius: 30px; font-size: 0.95rem; outline: none; background: #fff; }
+        .search-btn { 
+            position: absolute; 
+            right: 4px; 
+            width: 36px; 
+            height: 36px; 
+            background: linear-gradient(180deg, #f53d2d 0%, #ff5746 50%, #f53d2d 100%); 
+            border: 2px solid #fff; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            color: #fff; 
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+        .search-btn:hover { transform: scale(1.05); }
 
         .hotline { font-weight: bold; background-color: #fff; color: #f53d2d; padding: 6px 15px; border-radius: 30px; font-size: 1rem; display: flex; align-items: center; gap: 6px; border: 2px solid #fff; }
 
         .container { max-width: 1400px; margin: 15px auto; padding: 0 15px; }
 
-        /* THANH MENU DỊCH VỤ MẸ TONE MÀU ĐỎ ẤM */
+        /* THANH MENU DỊCH VỤ MẸ - CHỮ ĐEN, HOVER CHỮ TRẮNG, ICON GIỮ ĐỎ */
         .main-services { display: flex; background: #fff0ee; margin-bottom: 15px; border-radius: 35px; overflow: hidden; padding: 5px; gap: 5px; border: 2px solid #ffcdb2; }
-        .service-tab { flex: 1; text-align: center; padding: 12px 10px; color: #b71c1c; font-weight: bold; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.05rem; text-transform: uppercase; border-radius: 30px; }
-        .service-tab i { font-size: 1.4rem; color: #f53d2d; } 
-        .service-tab:hover { background-color: #ffe0dc; }
+        .service-tab { flex: 1; text-align: center; padding: 12px 10px; color: #000; font-weight: bold; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.05rem; text-transform: uppercase; border-radius: 30px; }
+        .service-tab i { font-size: 1.4rem; color: #f53d2d; transition: color 0.2s; } 
+        .service-tab:hover { background-color: #ffe0dc; color: #fff; }
+        .service-tab:hover i { color: #f53d2d; }
         .service-tab.active { background-color: #f53d2d; color: #fff; }
         .service-tab.active i { color: #fff; }
 
-        /* THANH DANH MỤC CON (MỤC LỤC SẢN PHẨM) */
+        /* THANH DANH MỤC CON - CHỮ ĐEN */
         .category-nav { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding: 10px 5px; white-space: nowrap; }
         .category-nav::-webkit-scrollbar { height: 4px; }
         .category-nav::-webkit-scrollbar-thumb { background: #ffcdb2; border-radius: 4px; }
         
-        .cat-btn { background-color: #fff; border: 2px solid #ffdad6; padding: 8px 15px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; color: #4a148c; display: flex; align-items: center; gap: 10px; transition: all 0.2s; }
+        .cat-btn { background-color: #fff; border: 2px solid #ffdad6; padding: 8px 15px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; color: #000; display: flex; align-items: center; gap: 10px; transition: all 0.2s; }
         .cat-btn i { font-size: 1.8rem; color: #f53d2d; transition: color 0.2s; }
         .cat-btn.active, .cat-btn:hover { color: #b71c1c; border-color: #f53d2d; background: #fff5f5; box-shadow: 0 4px 10px rgba(245,61,45,0.08); }
         .cat-btn.active i, .cat-btn:hover i { color: #d32f2f; }
@@ -57,12 +74,12 @@
         /* BỐ CỤC CHÍNH ĐA LUỒNG */
         .main-layout { display: grid; grid-template-columns: 260px 1fr 280px; gap: 20px; }
 
-        /* BÊN TRÁI: BỘ LỌC TÌM KIẾM TONE ĐỎ ẤM (BẬT CHO CẢ MUA, THU MUA, THUÊ) */
+        /* BÊN TRÁI: BỘ LỌC TÌM KIẾM */
         .sidebar-left { display: flex; flex-direction: column; gap: 15px; }
         .filter-box { background: #fff5f4; border: 2px solid #ffcdb2; padding: 15px; border-radius: 30px; }
         .filter-box h3 { font-size: 1.15rem; color: #b71c1c; margin-bottom: 10px; border-bottom: 2px dashed #f53d2d; padding-bottom: 4px; }
         .filter-group { display: flex; flex-direction: column; gap: 8px; }
-        .filter-group label { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; cursor: pointer; }
+        .filter-group label { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; cursor: pointer; color: #000; }
         .filter-group input { accent-color: #f53d2d; width: 16px; height: 16px; }
         
         /* BÊN PHẢI: CHÍNH SÁCH BẢO HÀNH & NÚT HÌNH ẢNH MXH */
@@ -78,25 +95,35 @@
         .social-img-btn { width: 40px; height: 40px; object-fit: contain; transition: transform 0.2s; cursor: pointer; }
         .social-img-btn:hover { transform: scale(1.25) rotate(5deg); }
 
-        /* KHU VỰC GIỮA: HIỂN THỊ DANH SÁCH */
+        /* KHU VỰC GIỮA: HIỂN THỊ SẢN PHẨM */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 15px; }
         
-        /* HOẠT ẢNH CARD TO LÊN KHI ĐƯA CHUỘT VÀO, BO TRÒN HẾT CỠ */
-        .product-card { background-color: #fff; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column; border: 2px solid #ffcdb2; position: relative; padding: 15px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.3s; }
-        .product-card:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(245,61,45,0.12); border-color: #f53d2d; }
+        /* ĐÃ THÊM VIỀN ĐEN NHỎ VÀ ĐỔ BÓNG XÁM NHẸ ĐỂ TÁCH BIỆT CÁC Ô SẢN PHẨM */
+        .product-card { 
+            background-color: #fff; 
+            border-radius: 30px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            border: 1px solid #111; /* Viền đen nhỏ */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Đổ bóng xám nhẹ tách biệt */
+            position: relative; 
+            padding: 15px; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.3s, border-color 0.3s; 
+        }
+        .product-card:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(245,61,45,0.2); border-color: #f53d2d; }
         
         /* Khung ảnh & Chữ viết tay đổi mới không lỗi font */
         .img-container { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; border-radius: 20px; overflow: hidden; }
         .product-img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .no-img-graffiti { font-family: 'Patrick Hand', cursive; font-size: 1.4rem; color: #b71c1c; text-align: center; border: 2px dashed #f53d2d; padding: 15px; border-radius: 25px; background: #fff5f4; line-height: 1.2; font-weight: bold; }
 
-        /* Tag giảm giá màu đỏ ấm áp */
+        /* Tag giảm giá màu đỏ */
         .sale-badge { position: absolute; top: 10px; left: 10px; background: #f53d2d; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; z-index: 5; }
         
         .product-info { display: flex; flex-direction: column; flex-grow: 1; }
         .product-name { font-size: 1.15rem; font-weight: bold; margin-bottom: 6px; color: #222; height: 2.6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
-        /* Chữ không khung, khi đưa chuột vào card sẽ hiện khung ẩn */
         .product-desc { font-size: 0.95rem; color: #666; margin-bottom: 10px; padding: 4px 8px; border: 2px solid transparent; border-radius: 20px; transition: all 0.2s; }
         .product-card:hover .product-desc { border-color: #ffcdb2; background: #fffdfc; color: #333; }
 
@@ -107,22 +134,29 @@
         .save-money { font-size: 1.05rem; color: #b71c1c; font-weight: bold; margin-bottom: 2px; }
         .stock-status { font-size: 0.9rem; color: #2e7d32; font-weight: bold; margin-bottom: 4px; }
 
-        /* NÚT BẤM CÓ ICON ĐỔI MÀU RIÊNG */
+        /* THIẾT KẾ MỚI CHO CÁC NÚT BẤM (HOVER ĐỔI MÀU / BACKGROUND CHUẨN) */
         .btn-group { display: flex; gap: 6px; margin-top: auto; }
-        .contact-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; text-decoration: none; padding: 10px 5px; border-radius: 30px; font-weight: bold; font-size: 1rem; border: 2px solid transparent; transition: all 0.2s; cursor: pointer; }
+        .contact-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; padding: 10px 5px; border-radius: 30px; font-weight: bold; font-size: 1rem; border: 2px solid transparent; transition: all 0.2s; cursor: pointer; }
         
-        .btn-mua-zalo { background-color: #f53d2d; border-color: #f53d2d; }
-        .btn-mua-zalo i { color: #fff; font-size: 1.5rem; } 
-        .btn-mua-zalo:hover { background-color: #fff; color: #f53d2d; border-color: #f53d2d; }
-        .btn-mua-zalo:hover i { color: #b71c1c; } 
+        /* Nút Mua: Tone Đỏ, viền đỏ, nền trắng, hover nền đỏ chữ trắng icon trắng */
+        .btn-mua-zalo { background-color: #fff; color: #f53d2d; border: 2px solid #f53d2d; }
+        .btn-mua-zalo i { color: #f53d2d; font-size: 1.3rem; transition: color 0.2s; } 
+        .btn-mua-zalo:hover { background-color: #f53d2d; color: #fff; }
+        .btn-mua-zalo:hover i { color: #fff; } 
 
-        .btn-detail { background-color: #ffdad6; color: #b71c1c; border-color: #ffdad6; }
-        .btn-detail i { color: #b71c1c; font-size: 1.4rem; }
-        .btn-detail:hover { background-color: #fff; color: #f53d2d; border-color: #f53d2d; }
-        .btn-detail:hover i { color: #f53d2d; }
+        /* Nút Chi tiết: Tone Xanh dương, viền xanh, nền trắng, hover nền xanh nhạt chữ trắng icon đậm mất viền */
+        .btn-detail { background-color: #fff; color: #0288d1; border: 2px solid #0288d1; }
+        .btn-detail i { color: #0288d1; font-size: 1.2rem; transition: color 0.2s; }
+        .btn-detail:hover { background-color: #e1f5fe; color: #fff; border-color: transparent; } /* Nền xanh dương nhạt, chữ trắng, mất viền */
+        .btn-detail:hover i { color: #01579b; } /* Icon xanh dương đậm hơn */
 
-        .btn-action-tab { width: 100%; background: #f53d2d; border-radius: 30px; }
-        .btn-action-tab:hover { background: #fff; color: #f53d2d; border: 2px solid #f53d2d; }
+        .btn-action-tab { width: 100%; background-color: #fff; color: #f53d2d; border: 2px solid #f53d2d; border-radius: 30px; }
+        .btn-action-tab:hover { background-color: #f53d2d; color: #fff; }
+
+        /* THANH PHÂN TRANG (PAGINATION) */
+        .pagination-container { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 30px; grid-column: 1 / -1; }
+        .page-link { padding: 8px 16px; border: 1px solid #ffcdb2; background-color: #fff; color: #b71c1c; font-weight: bold; border-radius: 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .page-link:hover, .page-link.active { background-color: #f53d2d; color: #fff; border-color: #f53d2d; }
 
         /* POPUP CHI TIẾT SẢN PHẨM */
         .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
@@ -152,9 +186,10 @@
 
     <header>
         <div class="header-container">
-            <a href="#" class="logo">CÔNG NGHỆ 2ND<span>_</span></a>
+            <a href="#" class="logo">CÔNG NGHỆ 2ND</a>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Bạn cần tìm máy gì..." oninput="searchProducts()">
+                <input type="text" id="search-input" placeholder="Bạn cần tìm máy gì..." oninput="triggerSearch()">
+                <div class="search-btn" onclick="triggerSearch()"><i class="fa-solid fa-magnifying-glass"></i></div>
             </div>
             <div class="hotline"><i class="fa-solid fa-phone"></i> 0343.321.608</div>
         </div>
@@ -212,8 +247,11 @@
                 </div>
             </div>
 
-            <div class="product-grid" id="product-list">
-                <div class="loading">Đang nạp dữ liệu kho QuanLiWeb...</div>
+            <div>
+                <div class="product-grid" id="product-list">
+                    <div class="loading">Đang nạp dữ liệu kho QuanLiWeb...</div>
+                </div>
+                <div class="pagination-container" id="pagination-zone"></div>
             </div>
 
             <div class="sidebar-right">
@@ -286,17 +324,21 @@
         let currentCategory = 'Tất cả';
         let searchQuery = '';
         let allProducts = [];
+        
+        // BIẾN PHÂN TRANG (MỖI TRANG CHỈ HIỂN THỊ TỐI ĐA 15 SẢN PHẨM)
+        let currentPage = 1;
+        const itemsPerPage = 15;
 
         function switchService(serviceName, element) {
             currentService = serviceName;
             currentCategory = 'Tất cả';
+            currentPage = 1; // Reset trang về 1 khi đổi danh mục lớn
             document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
             element.classList.add('active');
             
             const sideFilter = document.getElementById('sidebar-filter-zone');
             const subNav = document.getElementById('sub-nav');
             
-            // Hiện bộ lọc bên trái cho cả Mua, ThuMua, ChoThue
             if (serviceName === 'ThiBangLai') {
                 sideFilter.style.visibility = 'hidden';
                 subNav.style.display = 'none'; 
@@ -319,7 +361,6 @@
                     const data = JSON.parse(jsonString);
                     const rows = data.table.rows;
 
-                    // Chuẩn hóa cấu trúc cột: A=ID, B=DanhMuc, C=ThuongHieu, D=TenSanPham, E=HinhAnh, F=GiaGoc/GiaCũ, G=GiaHienTai, H=TonKho, I=MoTa
                     allProducts = rows.map(r => ({
                         id: r.c[0] ? r.c[0].v : 'Mã trống',
                         category: r.c[1] ? r.c[1].v : 'Chưa phân loại',
@@ -337,35 +378,49 @@
 
         function renderView() {
             const grid = document.getElementById('product-list');
+            const paginationZone = document.getElementById('pagination-zone');
             let html = '';
             let displayList = [...allProducts];
 
-            // Áp dụng bộ lọc mục lục con (Danh mục)
+            // 1. Áp dụng toàn bộ bộ lọc
             if (currentService !== 'ThiBangLai' && currentCategory !== 'Tất cả') {
                 displayList = displayList.filter(p => p.category.trim().toLowerCase() === currentCategory.trim().toLowerCase());
             }
 
-            // Áp dụng bộ lọc khoảng giá chung (Dựa trên cột giá hiện tại)
             if (filterPrice === 'under5') displayList = displayList.filter(p => p.price < 5000000);
             else if (filterPrice === '5to15') displayList = displayList.filter(p => p.price >= 5000000 && p.price <= 15000000);
             else if (filterPrice === 'over15') displayList = displayList.filter(p => p.price > 15000000);
 
-            // Áp dụng bộ lọc thương hiệu chung
             if (filterBrand !== 'all') {
                 displayList = displayList.filter(p => p.brand.trim().toLowerCase() === filterBrand.toLowerCase());
             }
 
-            // Tìm kiếm ký tự tên
             if (searchQuery) displayList = displayList.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
-            // Sắp xếp giá tiền
             if (filterSort === 'asc') displayList.sort((a,b) => a.price - b.price);
             else if (filterSort === 'desc') displayList.sort((a,b) => b.price - a.price);
 
-            if(displayList.length === 0) return grid.innerHTML = '<div class="loading">Không tìm thấy sản phẩm phù hợp bộ lọc.</div>';
+            if(displayList.length === 0) {
+                grid.innerHTML = '<div class="loading">Không tìm thấy sản phẩm phù hợp bộ lọc.</div>';
+                paginationZone.innerHTML = '';
+                return;
+            }
 
+            // 2. XỬ LÝ PHÂN TRANG (PAGINATION) TOÁN HỌC KHÉO LÉO
+            const totalItems = displayList.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            // Giới hạn trang hiện tại không vượt quá tổng số trang tối đa
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedList = displayList.slice(startIndex, endIndex);
+
+            // 3. Hiển thị danh sách sản phẩm của trang hiện tại
             if (currentService === 'Mua') {
-                displayList.forEach(p => {
+                paginatedList.forEach(p => {
                     let pct = 0;
                     let saved = p.oldPrice - p.price;
                     if (p.oldPrice > 0) pct = Math.round((saved / p.oldPrice) * 100);
@@ -397,7 +452,7 @@
                 });
             } 
             else if (currentService === 'ThuMua') {
-                displayList.forEach(p => {
+                paginatedList.forEach(p => {
                     let imgHtml = p.image ? `<img class="product-img" src="${p.image}">` : `<div class="no-img-graffiti">Liên hệ để lấy<br>hình thực tế</div>`;
                     let msgThu = encodeURIComponent(`Mình cần thanh lý máy cũ: ${p.name} (Mã: ${p.id})`);
                     html += `
@@ -416,7 +471,7 @@
                 });
             } 
             else if (currentService === 'ChoThue') {
-                displayList.forEach(p => {
+                paginatedList.forEach(p => {
                     let imgHtml = p.image ? `<img class="product-img" src="${p.image}">` : `<div class="no-img-graffiti">Liên hệ để lấy<br>hình thực tế</div>`;
                     let msgThue = encodeURIComponent(`Mình cần thuê thiết bị: ${p.name} (Mã hàng: ${p.id})`);
                     html += `
@@ -435,7 +490,7 @@
                 });
             } 
             else if (currentService === 'ThiBangLai') {
-                displayList.forEach(p => {
+                paginatedList.forEach(p => {
                     let imgHtml = p.image ? `<img class="product-img" src="${p.image}">` : `<div class="no-img-graffiti">HÌNH THI BẰNG LÁI</div>`;
                     let msgThi = encodeURIComponent(`Mình muốn nhận tư vấn khóa học thi bằng lái: ${p.name}`);
                     html += `
@@ -456,6 +511,49 @@
             }
 
             grid.innerHTML = html;
+
+            // 4. Khởi tạo thanh nút phân trang giao diện trực quan
+            renderPagination(totalPages);
+        }
+
+        // HÀM XÂY DỰNG GIAO DIỆN NÚT PHÂN TRANG CHUYỂN ĐỘNG SẮC NÉT
+        function renderPagination(totalPages) {
+            const paginationZone = document.getElementById('pagination-zone');
+            paginationZone.innerHTML = '';
+
+            if (totalPages <= 1) return; // Nếu chỉ có 1 trang thì ẩn luôn thanh chuyển trang
+
+            let pagHTML = '';
+            
+            // Nút Quay lại trang trước
+            if (currentPage > 1) {
+                pagHTML += `<button class="page-link" onclick="changePage(${currentPage - 1})">« Trước</button>`;
+            }
+
+            // Danh sách số trang
+            for (let i = 1; i <= totalPages; i++) {
+                pagHTML += `<button class="page-link ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+
+            // Nút Sang trang kế tiếp
+            if (currentPage < totalPages) {
+                pagHTML += `<button class="page-link" onclick="changePage(${currentPage + 1})">Tiếp »</button>`;
+            }
+
+            paginationZone.innerHTML = pagHTML;
+        }
+
+        function changePage(pageNumber) {
+            currentPage = pageNumber;
+            renderView();
+            // Tự động cuộn mượt lên đầu danh sách sản phẩm để tiện xem
+            window.scrollTo({ top: 180, behavior: 'smooth' });
+        }
+
+        function triggerSearch() {
+            searchQuery = document.getElementById('search-input').value.trim();
+            currentPage = 1; // Đẩy về trang 1 khi tìm kiếm từ khóa mới
+            renderView();
         }
 
         function openDetailPopup(productId) {
@@ -468,7 +566,6 @@
             const imgZone = document.getElementById('pop-img-zone');
             imgZone.innerHTML = product.image ? `<img src="${product.image}" style="max-width:100%; max-height:180px; object-fit:contain;">` : `<div class="no-img-graffiti">LIÊN HỆ LẤY HÌNH</div>`;
 
-            // Tìm sản phẩm tương tự cùng phân loại DanhMuc
             const related = allProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
             const relatedGrid = document.getElementById('pop-related-grid');
             relatedGrid.innerHTML = '';
@@ -495,15 +592,15 @@
 
         function filterByCategory(catName) {
             currentCategory = catName;
+            currentPage = 1; // Reset về trang 1 khi bấm danh mục con mới
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             if(event) event.currentTarget.classList.add('active');
             renderView();
         }
 
-        function setPriceFilter(val) { filterPrice = val; renderView(); }
-        function setBrandFilter(val) { filterBrand = val; renderView(); }
-        function setSortFilter(val) { filterSort = val; renderView(); }
-        function searchProducts() { searchQuery = document.getElementById('search-input').value.trim(); renderView(); }
+        function setPriceFilter(val) { filterPrice = val; currentPage = 1; renderView(); }
+        function setBrandFilter(val) { filterBrand = val; currentPage = 1; renderView(); }
+        function setSortFilter(val) { filterSort = val; currentPage = 1; renderView(); }
 
         window.onload = loadData;
     </script>
